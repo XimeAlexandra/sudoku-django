@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+<body>
+    <h1>Sudoku</h1>
+    <div id="sudoku-board">
+        {% for row in board %}
+        <div class="row">
+            {% for num in row %}
+            <input type="text" class="cell" value="{% if num != 0 %}{{ num }}{% endif %}" maxlength="1" {% if num != 0 %}readonly{% endif %}>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <button onclick="newGame()">Nuevo Juego</button>
+    <button onclick="verifySolution()">Verificar</button>
+    <p id="result"></p>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

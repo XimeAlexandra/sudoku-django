@@ -1,0 +1,140 @@
+/* Estilo mejorado para el tablero de Sudoku */
+#sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    gap: 1px;
+    margin: 25px auto;
+    width: fit-content;
+    border: 3px solid #2c3e50;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.row {
+    display: contents;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    border: 1px solid #bdc3c7;
+    box-sizing: border-box;
+    background-color: white;
+    transition: all 0.2s ease;
+    color: #2c3e50;
+}
+
+.cell:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.03);
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.cell:focus {
+    outline: none;
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+}
+
+/* Bordes más gruesos para los subcuadrantes 3x3 */
+.cell:nth-child(3n) {
+    border-right: 2px solid #2c3e50;
+}
+
+.row:nth-child(3n) .cell {
+    border-bottom: 2px solid #2c3e50;
+}
+
+/* Estilo para celdas de solo lectura (pistas) */
+.cell[readonly] {
+    background-color: #f5f5f5;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* Estilo para los botones */
+button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Estilo para el mensaje de resultado */
+#result {
+    color: #2c3e50;
+    font-size: 18px;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    min-height: 24px;
+}
+
+/* Clases para mensajes de resultado */
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Estilo para el contenedor principal */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilo para el título */
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 28px;
+}
+
+/* Efecto para celdas incorrectas */
+.cell.error-cell {
+    background-color: #ffebee;
+    color: #c62828;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-3px); }
+    40%, 80% { transform: translateX(3px); }
+}
