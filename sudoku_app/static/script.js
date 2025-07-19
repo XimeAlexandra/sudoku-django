@@ -1,8 +1,14 @@
-async function newGame() {
-    const response = await fetch('/new_game', { method: 'GET' });
+window.newGame = async function () {
+    const difficulty = document.getElementById("difficulty").value;
+
+    const response = await fetch(`/new_game?difficulty=${difficulty}`, {
+        method: "GET",
+    });
+
     const data = await response.json();
     updateBoard(data.board);
-}
+};
+
 
 async function verifySolution() {
     const board = getBoardState();

@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: linear-gradient(to bottom right, #d0e4f7, #a8c1db, #7a9ec2);
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
@@ -214,4 +213,26 @@ button:active {
         padding: 8px 16px;
         font-size: 12px;
     }
+}
+
+.difficulty-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-size: 14px;
+    color: #3b4a63;
+    min-width: 120px;
+}
+
+.difficulty-box select {
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
 }
