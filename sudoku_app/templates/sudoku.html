@@ -19,8 +19,10 @@
         </div>
         {% endfor %}
     </div>
-    <button onclick="newGame()">Nuevo Juego</button>
-    <button onclick="verifySolution()">Verificar</button>
+   <div class="buttons">
+  <button onclick="newGame()">Nuevo Juego</button>
+  <button onclick="verifySolution()">Verificar</button>
+</div>
     <p id="result"></p>
     <script src="{% static 'script.js' %}"></script>
 </body>
