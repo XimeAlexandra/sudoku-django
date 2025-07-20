@@ -62,3 +62,32 @@ function updateBoard(board) {
     document.getElementById('result').innerText = '';
     document.getElementById('result').style.color = 'black';
 }
+
+window.solveSudoku = async function () {
+    const board = getBoardState();
+
+    const response = await fetch('/solve', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        },
+        body: JSON.stringify({ board }),
+    });
+
+    const data = await response.json();
+
+    if (data.solved) {
+        const solvedBoard = data.solved;
+        const inputs = document.querySelectorAll('#sudoku-board input');
+        inputs.forEach((input, index) => {
+            const row = Math.floor(index / 9);
+            const col = index % 9;
+            input.value = solvedBoard[row][col];
+            input.readOnly = true;
+            input.classList.add('solved-cell'); 
+        });
+    } else {
+        alert('No se pudo resolver el Sudoku.');
+    }
+};

@@ -32,3 +32,15 @@ def verify(request):
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
+
+from .utils import solve_sudoku  # importa la función nueva
+
+def solve(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        board = data.get('board')
+        solved = solve_sudoku(board)
+        if solved:
+            return JsonResponse({'solved': solved})
+        return JsonResponse({'error': 'No se pudo resolver'}, status=400)
+    return JsonResponse({'error': 'Invalid request'}, status=400)
